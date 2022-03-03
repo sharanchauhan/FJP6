@@ -1,0 +1,78 @@
+sharanchauhan@Sharans-MacBook-Air FJP6 % git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in /Users/sharanchauhan/Documents/FJP6/.git/
+sharanchauhan@Sharans-MacBook-Air FJP6 % git add .                                                         
+sharanchauhan@Sharans-MacBook-Air FJP6 % git status             
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .DS_Store
+        new file:   css_selector_questions/q1.html
+        new file:   css_selector_questions/q10.html
+        new file:   css_selector_questions/q11.html
+        new file:   css_selector_questions/q2.html
+        new file:   css_selector_questions/q3.html
+        new file:   css_selector_questions/q4.html
+        new file:   css_selector_questions/q5.html
+        new file:   css_selector_questions/q6.html
+        new file:   css_selector_questions/q7.html
+        new file:   css_selector_questions/q8.html
+        new file:   css_selector_questions/q9.html
+        new file:   html and selectors/index.html
+        new file:   html and selectors/logo2.png
+        new file:   html and selectors/selectors.html
+        new file:   project/.DS_Store
+        new file:   project/index.html
+        new file:   project/lap.jpeg
+        new file:   project/style.css
+
+sharanchauhan@Sharans-MacBook-Air FJP6 % git commit -m "css,selector and project"                          
+[master (root-commit) 9adb6a4] css,selector and project
+ 19 files changed, 654 insertions(+)
+ create mode 100644 .DS_Store
+ create mode 100644 css_selector_questions/q1.html
+ create mode 100644 css_selector_questions/q10.html
+ create mode 100644 css_selector_questions/q11.html
+ create mode 100644 css_selector_questions/q2.html
+ create mode 100644 css_selector_questions/q3.html
+ create mode 100644 css_selector_questions/q4.html
+ create mode 100644 css_selector_questions/q5.html
+ create mode 100644 css_selector_questions/q6.html
+ create mode 100644 css_selector_questions/q7.html
+ create mode 100644 css_selector_questions/q8.html
+ create mode 100644 css_selector_questions/q9.html
+ create mode 100644 html and selectors/index.html
+ create mode 100644 html and selectors/logo2.png
+ create mode 100644 html and selectors/selectors.html
+ create mode 100644 project/.DS_Store
+ create mode 100644 project/index.html
+ create mode 100644 project/lap.jpeg
+ create mode 100644 project/style.css
+sharanchauhan@Sharans-MacBook-Air FJP6 % git config --global user.name "sharanchauhan"                     
+sharanchauhan@Sharans-MacBook-Air FJP6 % git config --global user.email "sharanchauhan29@gmail.com"         
+sharanchauhan@Sharans-MacBook-Air FJP6 % git remote add origin https://github.com/sharanchauhan/FJP6.git    
+sharanchauhan@Sharans-MacBook-Air FJP6 % git branch -M main
+sharanchauhan@Sharans-MacBook-Air FJP6 % git push -u origin main
+Enumerating objects: 24, done.
+Counting objects: 100% (24/24), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (24/24), done.
+Writing objects: 100% (24/24), 309.73 KiB | 25.81 MiB/s, done.
+Total 24 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/sharanchauhan/FJP6.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+sharanchauhan@Sharans-MacBook-Air FJP6 % 
