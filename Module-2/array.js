@@ -17,3 +17,27 @@ console.log("*******************************************************************
 console.log("Array before push = "+a);
 a.push("New Item");
 console.log("Array after push = "+a);
+
+//2. pop
+
+console.log("Array before pop : ",eleArr);
+eleArr.pop();
+console.log("Array after pop: ",eleArr);
+
+//3. shift
+
+console.log("Array before shift: ",eleArr);
+eleArr.shift();
+console.log("Array after shift: ",eleArr);
+
+
+//4. unshift
+
+console.log("Array before unshift: ",eleArr);
+eleArr.unshift("newly added item");
+console.log("Array after unshift: ",eleArr);
+
+//length
+
+let len = eleArr.length;
+console.log(len);
