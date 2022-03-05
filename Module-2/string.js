@@ -7,7 +7,6 @@ let len = str.length;
 console.log(len);
 
 //sliced method -> extract part of a string
-
 let slicedArr = str.slice(2,8);
 console.log(slicedArr);
 
