@@ -21,7 +21,7 @@ let ans=sub(2,9);
 console.log("Substraction = "+ans);
 
 //Storing function in a variable
-let mul=function mul(num1,num2)
+let mul=function multiply(num1,num2)
 {
     return(num1*num2);
 }
