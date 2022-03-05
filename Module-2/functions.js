@@ -26,3 +26,20 @@ let mul=function multiply(num1,num2)
     return(num1*num2);
 }
 console.log("Multiplication = "+mul(5,7));
+
+// IFFE -> Immediately Invoked Function Expression
+(function()
+{
+    console.log("Called from IFFE");
+})();
+
+//IFFE -> Immediately Invoked Function Expression with parameters
+(function(num1,num2)
+{
+    console.log("Multiplying again = "+(num1*num2));
+})(5,5);
+
+(function(num1,num2)
+{
+    console.log("Division Result = "+(num1/num2));
+})(10,5);
