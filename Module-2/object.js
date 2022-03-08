@@ -1,7 +1,7 @@
 // Empty Object
 let a={}
 console.log(a);//Printing the empty object
-
+//Declaration and initialization
 let obj1={
     Name:"Sharan Chauhan",
     phoneNo: 7042761320,
@@ -9,7 +9,7 @@ let obj1={
     lastName:'Chauhan'
 };
 console.log(obj1);
-
+// Declaration and initialization
 let captAmerica={
     Name:'Steve',
     Age:150,
@@ -24,3 +24,10 @@ let captAmerica={
 }
 
 console.log(captAmerica);
+
+//How to access the keys and values in the object
+console.log(captAmerica.Name);
+console.log(captAmerica.Friends[3]);
+console.log(captAmerica.address.city);
+//console.log(captAmerica.sayHi());
+captAmerica.sayHi();
