@@ -18,6 +18,7 @@ let captAmerica={
         city:"Queens",
         state:"Washington"
     },
+    isAvenger:false,
     sayHi:function(){
         console.log("Captain America Says Hi !!");
     }
@@ -31,3 +32,15 @@ console.log(captAmerica.Friends[3]);
 console.log(captAmerica.address.city);
 //console.log(captAmerica.sayHi());
 captAmerica.sayHi();
+//Adding a new key to the object
+captAmerica.isAvenger=true;
+console.log(captAmerica);
+captAmerica.address.state='USA';
+console.log(captAmerica);
+//Deleting a key from the object
+console.log(captAmerica);// Before deletion
+delete captAmerica.isAvenger;
+console.log(captAmerica);// After deletion
+console.log(captAmerica['Name']);
+console.log(captAmerica['Address']['city']);// Second method to access keys and values in the object
+
