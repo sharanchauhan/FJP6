@@ -1,4 +1,4 @@
-//move a file
+// move a file
 // npm install mv
 let mv=require('mv');
 let source="/Users/sharanchauhan/Documents/FJP6/Module-2/Node/Questions/folder-q1/text-file.txt";
