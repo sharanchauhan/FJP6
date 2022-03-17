@@ -64,4 +64,4 @@ function checkType(ext)
 //     let destinationPath = path.join(pathOfFolder,fileName);
 //     fs.copyFileSync(sourcePath,destinationPath);
 //     fs.unlinkSync(sourcePath);
-}
+// }
