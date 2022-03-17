@@ -56,3 +56,12 @@ function checkType(ext)
     }
     return 'Others'
 }
+
+// Snippet to move file
+
+// function moveFile(folderPath,pathOfFolder,fileName){
+//     let sourcePath = path.join(folderPath,fileName);
+//     let destinationPath = path.join(pathOfFolder,fileName);
+//     fs.copyFileSync(sourcePath,destinationPath);
+//     fs.unlinkSync(sourcePath);
+}
