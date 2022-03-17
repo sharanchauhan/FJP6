@@ -24,8 +24,17 @@ if(folderExists)
     {
         let ext=path.extname(files[i]);
         let type=checkType(ext);
-        console.log(type);
+        let p=path.join(__dirname,type);
+        if(!fs.existsSync(p))
+        {
+            fs.mkdirSync(p);
+        }
+        let source =path.join(__dirname,"Downloads",files[i]);
+        let destination=path.join(__dirname,type,files[i]);
+        fs.copyFileSync(source,destination);
+        fs.unlinkSync(source);
     }
+    fs.rmdirSync(path.join(__dirname,"Downloads"));
 }
 else
 {
