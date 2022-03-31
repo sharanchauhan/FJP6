@@ -3,6 +3,7 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 const url="https://www.espncricinfo.com/series/ipl-2021-1249214/match-results";
+let leaderboard=[];
 
 request(url,cb);
 function cb(error,response,html)
@@ -47,8 +48,36 @@ function cb1(error,response,html)
                 let balls=cells[3].textContent;
                 let fours=cells[5].textContent;
                 let sixes=cells[6].textContent;
-                console.log(name+" "+runs+" "+balls+" "+fours+" "+sixes);
+                // processPlayer(name,runs,balls,fours,sixes);
+                // console.log(name+" "+runs+" "+balls+" "+fours+" "+sixes);
             }
         }
     }
+}
+
+function processPlayer(name,runs,balls,fours,sixes){
+    runs = Number(runs);
+    balls = Number(balls);
+    fours = Number(fours);
+    sixes = Number(sixes);
+    for(let i=0;i<leaderboard.length;i++){
+        let playerObj = leaderboard[i];
+        if(playerObj.Name == name){
+            //will do some work here
+            playerObj.Runs+=runs;
+            playerObj.Balls+=balls;
+            playerObj.Fours+=fours;
+            playerObj.Sixes+=sixes;
+            return;
+        }
+    }
+    // code coming here means we did not find our player inside leaderboard
+    let obj = {
+        Name:name,
+        Runs:runs,
+        Balls:balls,
+        Fours:fours,
+        Sixes:sixes
+    }
+    leaderboard.push(obj);
 }
