@@ -4,7 +4,7 @@ const { JSDOM } = jsdom;
 
 const url="https://www.espncricinfo.com/series/ipl-2021-1249214/match-results";
 let leaderboard=[];
-
+let counter=0;
 request(url,cb);
 function cb(error,response,html)
 {
@@ -22,7 +22,7 @@ function cb(error,response,html)
             let link="https://www.espncricinfo.com"+allScorecardsTags[i].href;
             // console.log(link);
             request(link,cb1);
-
+            counter++;
         }
     }
 }
@@ -48,9 +48,14 @@ function cb1(error,response,html)
                 let balls=cells[3].textContent;
                 let fours=cells[5].textContent;
                 let sixes=cells[6].textContent;
-                // processPlayer(name,runs,balls,fours,sixes);
+                processPlayer(name,runs,balls,fours,sixes);
                 // console.log(name+" "+runs+" "+balls+" "+fours+" "+sixes);
             }
+        }
+        counter--;
+        if(counter==0)
+        {
+            console.log(leaderboard);
         }
     }
 }
@@ -65,6 +70,7 @@ function processPlayer(name,runs,balls,fours,sixes){
         if(playerObj.Name == name){
             //will do some work here
             playerObj.Runs+=runs;
+            playerObj.Innings+=1;
             playerObj.Balls+=balls;
             playerObj.Fours+=fours;
             playerObj.Sixes+=sixes;
@@ -75,6 +81,7 @@ function processPlayer(name,runs,balls,fours,sixes){
     let obj = {
         Name:name,
         Runs:runs,
+        Innings:1,
         Balls:balls,
         Fours:fours,
         Sixes:sixes
