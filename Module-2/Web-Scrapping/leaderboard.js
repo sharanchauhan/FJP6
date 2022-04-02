@@ -1,4 +1,5 @@
 const request = require('request');
+const fs=require('fs');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
@@ -55,7 +56,9 @@ function cb1(error,response,html)
         counter--;
         if(counter==0)
         {
-            console.log(leaderboard);
+            // console.log(leaderboard);
+            let data=JSON.stringify(leaderboard);
+            fs.writeFileSync('BatsmenStats.json',data);
         }
     }
 }
