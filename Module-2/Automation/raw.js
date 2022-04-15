@@ -10,5 +10,12 @@ browser.then(function(browserInstance)
     console.log("Browser is opened");
     let page=browserInstance.newPage();
     return page;
-});
+}).then(function(pageI){
+    console.log("Page is opened");
+    let url=pageI.goto('https://www.google.co.in/');
+    return url;
+}).then(function()
+{
+    console.log("google is opened successfully!!");
+})
 
