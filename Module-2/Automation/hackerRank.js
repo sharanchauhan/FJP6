@@ -40,8 +40,8 @@ browserPromise.then(function(browser)
     return domPromise;
 }).then(function()
 {
-    let waitForSelector=page.waitForSelector("#input-1");
-    return waitForSelector;
+    let waitPromise=page.waitForSelector("#input-1");
+    return waitPromise;
 }).then(function()
 {
     let typeMail=page.type("#input-1",email,{delay:100});
@@ -54,4 +54,30 @@ browserPromise.then(function(browser)
 {
     let clickPromise=page.click('button[data-analytics="LoginPassword"]');
     return clickPromise;
+}).then(function()
+{
+    let waitPromise=page.waitForSelector('div[data-automation="algorithms"]');
+    return waitPromise;
+}).then(function()
+{
+    let clickPromise=page.click('div[data-automation="algorithms"]');
+    return clickPromise;
+}).then(function()
+{
+    return page.waitForSelector(".filter-group");
+}).then(function()
+{
+    let domSelectPromise = page.evaluate(function()
+    {
+        let allDivs = document.querySelectorAll(".filter-group");
+        let div = allDivs[3];
+        let clickSelector = div.querySelector(".ui-checklist-list-item input");
+        clickSelector.click();
+        return;
+    })
+    return domSelectPromise;
+}).then(function()
+{
+    console.log("warmup Selected");
+    return page.waitForSelector('.ui-btn.ui-btn-normal.primary-cta.ui-btn-line-primary.ui-btn-styled');
 })
