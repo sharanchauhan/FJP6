@@ -2,7 +2,7 @@ const puppeteer=require('puppeteer');
 const email="napoboj633@hhmel.com";
 const pass="Hello@123";
 
-let browserPromise=puppeteer.launch({headless:false});
+let browserPromise=puppeteer.launch({headless:false, defaultViewport: null,args: ['--start-fullscreen']});
 let page;
 browserPromise.then(function(browser)
 {
@@ -79,7 +79,23 @@ browserPromise.then(function(browser)
 }).then(function()
 {
     console.log("warmup Selected");
-    return page.waitForSelector('.ui-btn.ui-btn-normal.primary-cta.ui-btn-line-primary.ui-btn-styled');
+    return page.waitForSelector('.challenges-list .js-track-click.challenge-list-item');
+}).then(function()
+{
+    let arrPromise=page.evaluate(function()
+    {
+        let arr=[];
+        let links=document.querySelectorAll('.challenges-list .js-track-click.challenge-list-item');
+        for(let i=0;i<links.length;i++)
+        {
+            arr.push(links[i].href);
+        }
+        return arr;
+    })
+    return arrPromise;
+}).then(function(questionsArr)
+{
+    console.log(questionsArr);
 })
 
 
