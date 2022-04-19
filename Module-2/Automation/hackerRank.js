@@ -81,3 +81,17 @@ browserPromise.then(function(browser)
     console.log("warmup Selected");
     return page.waitForSelector('.ui-btn.ui-btn-normal.primary-cta.ui-btn-line-primary.ui-btn-styled');
 })
+
+
+
+function waitAndClick(selector){
+    return new Promise(function(resolve,reject){
+        let waitPromise = page.waitForSelector(selector);
+        waitPromise.then(function(){
+            let clickPromise = page.click(selector);
+            return clickPromise;
+        }).then(function(){
+            resolve();
+        });
+    })
+}
