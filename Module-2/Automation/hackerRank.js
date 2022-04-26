@@ -1,75 +1,50 @@
 const puppeteer=require('puppeteer');
-const email="napoboj633@hhmel.com";
+const mail="napoboj633@hhmel.com";
 const pass="Hello@123";
 const code = require('./code');
 
-let browserPromise=puppeteer.launch({headless:false, defaultViewport: null,args: ['--start-fullscreen']});
+let browserPromise = puppeteer.launch({ headless: false, defaultViewport: null,args: ['--start-fullscreen'] });
 let page;
-browserPromise.then(function(browser)
-{
-    let pagePromise=browser.newPage();
+browserPromise.then(function(browser){
+    console.log("Browser is opened");
+    let pagePromise = browser.newPage();
     return pagePromise;
-}).then(function(pageInstance)
-{
-    console.log("New Page is Opened!");
-    page=pageInstance;
-    let urlPromise=page.goto("https://www.hackerrank.com");
+}).then(function(pageInstance){
+    console.log("Page is opened");
+    page = pageInstance
+    let urlPromise = page.goto('https://www.hackerrank.com/');
     return urlPromise;
-}).then(function()
-{
-    console.log("HackerRank Page is opened!");
-    let waitPromise=page.waitForSelector("ul.menu a");
+}).then(function(){
+    return waitAndClick('ul.menu a');
+}).then(function(){
+    let waitPromise = page.waitForSelector(".fl-module-content.fl-node-content .fl-button");
     return waitPromise;
-}).then(function()
-{
-    let clickPromise=page.click("ul.menu a");
-    return clickPromise;
-}).then(function()
-{
-    console.log("Login Clicked");
-    let waitPromise=page.waitForSelector(".fl-module-content.fl-node-content .fl-button");
-    // let waitPromise=page.waitForSelector(".fl-module-content.fl-node-content .fl-button-wrap.fl-button-width-auto.fl-button-left a");
-    return waitPromise;
-}).then(function()
-{
-    let domPromise=page.evaluate(function()
-    {
-        let buttons=document.querySelectorAll(".fl-module-content.fl-node-content .fl-button");
-        buttons[1].click();
+}).then(function(){
+    let domClickPromse = page.evaluate(function(){
+        let btns = document.querySelectorAll(".fl-module-content.fl-node-content .fl-button");
+        btns[1].click();
         return;
     });
-    return domPromise;
-}).then(function()
-{
-    let waitPromise=page.waitForSelector("#input-1");
+    return domClickPromse;
+}).then(function(){
+    let waitPromise = page.waitForSelector("#input-1");
     return waitPromise;
-}).then(function()
-{
-    let typeMail=page.type("#input-1",email,{delay:100});
-    return typeMail;
-}).then(function()
-{
-    let typePass=page.type("#input-2",pass,{delay:100});
-    return typePass;
-}).then(function()
-{
-    let clickPromise=page.click('button[data-analytics="LoginPassword"]');
-    return clickPromise;
-}).then(function()
-{
-    let waitPromise=page.waitForSelector('div[data-automation="algorithms"]');
-    return waitPromise;
-}).then(function()
-{
-    let clickPromise=page.click('div[data-automation="algorithms"]');
-    return clickPromise;
-}).then(function()
-{
+}).then(function(){
+    let mailTypedPromise = page.type("#input-1",mail,{ delay: 100 });
+    return mailTypedPromise;
+}).then(function(){
+    let passTypedPromise = page.type("#input-2",pass,{delay:100});
+    return passTypedPromise;
+}).then(function(){
+    let clickPromse = page.click('button[data-analytics="LoginPassword"]');
+    return clickPromse;
+}).then(function(){
+    return waitAndClick('[data-automation="algorithms"]');
+})
+.then(function(){
     return page.waitForSelector(".filter-group");
-}).then(function()
-{
-    let domSelectPromise = page.evaluate(function()
-    {
+}).then(function(){
+    let domSelectPromise = page.evaluate(function(){
         let allDivs = document.querySelectorAll(".filter-group");
         let div = allDivs[3];
         let clickSelector = div.querySelector(".ui-checklist-list-item input");
@@ -77,27 +52,34 @@ browserPromise.then(function(browser)
         return;
     })
     return domSelectPromise;
-}).then(function()
-{
+}).then(function(){
     console.log("warmup Selected");
     return page.waitForSelector('.challenges-list .js-track-click.challenge-list-item');
-}).then(function()
-{
-    let arrPromise=page.evaluate(function()
-    {
-        let arr=[];
-        let links=document.querySelectorAll('.challenges-list .js-track-click.challenge-list-item');
-        for(let i=0;i<links.length;i++)
-        {
-            arr.push(links[i].href);
+}).then(function(){
+    let arrPromise = page.evaluate(function(){
+        let arr = [];
+        let aTags = document.querySelectorAll('.challenges-list .js-track-click.challenge-list-item');
+        for(let i=0;i<aTags.length;i++){
+            let link =  aTags[i].href;
+            console.log(link);
+            arr.push(link);
         }
         return arr;
     })
     return arrPromise;
-}).then(function(questionsArr)
-{
-    // console.log(questionsArr);
+}).then(function(questionsArr){
+    console.log(questionsArr);
+    console.log(code.answers.length);
     let questionPromise = questionSolver(questionsArr[0],code.answers[0]);
+    for(let i=1;i<questionsArr.length;i++){
+        questionPromise = questionPromise.then(function(){
+            let nextQuestionPromise = questionSolver(questionsArr[i],code.answers[i]);
+            return nextQuestionPromise;
+        })
+    }
+    return questionPromise;
+}).then(function(){
+    console.log("All the warm up questions have been submitted!!!");
 })
 
 
@@ -123,7 +105,6 @@ function questionSolver(question,answer){
         }).then(function(){
             return waitAndClick('.ui-tooltip-wrapper textarea');
         }).then(function(){
-            console.log("on the text area");
             let typePromise = page.type('.ui-tooltip-wrapper textarea',answer);
             return typePromise;
         }).then(function(){
@@ -150,9 +131,13 @@ function questionSolver(question,answer){
             let pressV = page.keyboard.press('V');
             return pressV;
         }).then(function(){
+            let upControl = page.keyboard.up('Control');
+            return upControl;
+        }).then(function(){
             return waitAndClick('.ui-btn.ui-btn-normal.ui-btn-primary.pull-right.hr-monaco-submit.ui-btn-styled');
         }).then(function(){
             console.log("questions submitted success");
+            resolve();
         })
     })
 }
