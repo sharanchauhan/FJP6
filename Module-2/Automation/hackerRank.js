@@ -108,7 +108,7 @@ function questionSolver(question,answer){
             let typePromise = page.type('.ui-tooltip-wrapper textarea',answer);
             return typePromise;
         }).then(function(){
-            let holdControl = page.keyboard.down('Control');
+            let holdControl = page.keyboard.down('Control'); // May work when Command key is resassigned to Control key in keyboard preferences!!
             return holdControl;
         }).then(function(){
             let pressA = page.keyboard.press('A');
