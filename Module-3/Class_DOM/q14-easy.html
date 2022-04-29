@@ -29,8 +29,20 @@
     <script>
       // Q- Make remove all button work  and make individual delete btn work 
       //   Solution:
-      
-
+      let rmBtn=document.querySelector('#all');
+      rmBtn.addEventListener('click',function()
+      {
+        let ulTag=document.querySelector('ul');
+        ulTag.remove();
+      });
+      let allBtns=document.querySelectorAll('ul button');
+      for(let i=0;i<allBtns.length;i++)
+      {
+        allBtns[i].addEventListener('click',function(e)
+        {
+          e.target.parentElement.remove();
+        });
+      }
     </script>
   </body>
 </html>
