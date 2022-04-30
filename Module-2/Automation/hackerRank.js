@@ -108,30 +108,30 @@ function questionSolver(question,answer){
             let typePromise = page.type('.ui-tooltip-wrapper textarea',answer);
             return typePromise;
         }).then(function(){
-            let holdControl = page.keyboard.down('Control'); // May work when Command key is resassigned to Control key in keyboard preferences!!
+            let holdControl = page.keyboard.down('Meta'); // May work when Command key is resassigned to'Meta'key in keyboard preferences!!
             return holdControl;
         }).then(function(){
-            let pressA = page.keyboard.press('A');
+            let pressA = page.keyboard.press('KeyA');
             return pressA;
         }).then(function(){
-            let pressX = page.keyboard.press('X');
+            let pressX = page.keyboard.press('KeyX');
             return pressX;
         }).then(function(){
-            let upControl = page.keyboard.up('Control');
+            let upControl = page.keyboard.up('Meta');
             return upControl;
         }).then(function(){
             return waitAndClick('.monaco-editor.no-user-select.vs');
         }).then(function(){
-            let holdControl = page.keyboard.down('Control');
+            let holdControl = page.keyboard.down('Meta');
             return holdControl;  
         }).then(function(){
-            let pressA = page.keyboard.press('A');
+            let pressA = page.keyboard.press('KeyA');
             return pressA;
         }).then(function(){
-            let pressV = page.keyboard.press('V');
+            let pressV = page.keyboard.press('KeyV');
             return pressV;
         }).then(function(){
-            let upControl = page.keyboard.up('Control');
+            let upControl = page.keyboard.up('Meta');
             return upControl;
         }).then(function(){
             return waitAndClick('.ui-btn.ui-btn-normal.ui-btn-primary.pull-right.hr-monaco-submit.ui-btn-styled');
