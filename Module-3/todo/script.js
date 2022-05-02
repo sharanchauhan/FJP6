@@ -10,7 +10,11 @@ inputTag.addEventListener('keydown',function(e)
         let data=inputTag.value;
         inputTag.value="";
         let liTag=document.createElement('li');
-        liTag.innerText=data;
+        // liTag.innerText=data;
+        liTag.innerHTML=`<div>${data}</div>
+                        <div><i class="fa fa-trash"></i></div>` // String interpolation
+        handelRemoval(liTag);
         ulTag.appendChild(liTag);
     }
+    
 })
