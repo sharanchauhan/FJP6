@@ -12,9 +12,18 @@ inputTag.addEventListener('keydown',function(e)
         let liTag=document.createElement('li');
         // liTag.innerText=data;
         liTag.innerHTML=`<div>${data}</div>
-                        <div><i class="fa fa-trash"></i></div>` // String interpolation
+                        <div class="delete"><i class="fa fa-trash"></i></div>` // String interpolation
         handelRemoval(liTag);
         ulTag.appendChild(liTag);
     }
-    
+
 })
+
+function handelRemoval(liTag)
+{
+    let deleteDiv=liTag.querySelector('.delete');
+    deleteDiv.addEventListener("click",function()
+    {
+        liTag.remove();
+    });
+}
