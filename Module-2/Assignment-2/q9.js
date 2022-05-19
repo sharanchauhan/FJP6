@@ -19,3 +19,5 @@ function globalFunction(x) {
   // 2) error
   // 3) NaN
   // 4) 5undefined
+
+//   Solution: - NaN
