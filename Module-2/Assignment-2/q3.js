@@ -20,3 +20,5 @@ function f(x,y)
 
 console.log(f(5,3));
 console.log(f(5)(3));
+
+// checking commit
