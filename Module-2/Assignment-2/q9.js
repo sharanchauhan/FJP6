@@ -21,3 +21,4 @@ function globalFunction(x) {
   // 4) 5undefined
 
 //   Solution: - NaN
+//
