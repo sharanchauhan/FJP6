@@ -11,20 +11,20 @@ function transducer(arr, fFn, mFn) {
   }
   
   
-  //B
-  function transducer(arr, fFn, mFn) {
-    let nArr = [];
-    for (x in arr) {
-      if (fFn(arr[x])) {
-        nArr.push(arr[x]);
-      }
+//B
+function transducer(arr, fFn, mFn) {
+  let nArr = [];
+  for (x in arr) {
+    if (fFn(arr[x])) {
+      nArr.push(arr[x]);
     }
-  
-    for (x in nArr) {
-      nArr[x] = mFn(nArr[x]);
-    }
-    return nArr;
   }
+
+  for (x in nArr) {
+    nArr[x] = mFn(nArr[x]);
+  }
+  return nArr;
+}
   
   // Options:
   
