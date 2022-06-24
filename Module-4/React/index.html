@@ -40,9 +40,9 @@
      )
  }
 
- function Element2(){
+ function Element2({name}){
      return(
-         <h1>How are you??</h1>
+         <h1>How are you {name}??</h1>
      )
  }
  function Parent()
@@ -50,8 +50,9 @@
     return(
         <div>
         <Element1 name="Sharan" age="21"/>
-        <Element2/>
+        <Element2 name="Sharan"/>
         <Element1 name="Shivam" age="17"/>
+        <Element2 name="Shivam"/>
         <Element1 name="NONAME"/>
         <Element1/>
         <Element2/>
