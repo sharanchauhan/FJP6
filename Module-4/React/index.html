@@ -28,9 +28,15 @@
 
  //JSX -> javascript + html
 
- function Element1(){
+//  Used the concept of destructuring in Element1
+ function Element1({name="Guest",age}){
      return(
-         <h1>Hello Coder</h1>
+        <div>
+         <h1>Hello {name} Coder</h1>
+         <h2>{age}</h2>
+         </div>
+
+        //  If more than 1 elements are being returned then cover them using a div
      )
  }
 
@@ -43,6 +49,10 @@
  {
     return(
         <div>
+        <Element1 name="Sharan" age="21"/>
+        <Element2/>
+        <Element1 name="Shivam" age="17"/>
+        <Element1 name="NONAME"/>
         <Element1/>
         <Element2/>
         <Element1/>
