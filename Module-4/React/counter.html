@@ -15,6 +15,21 @@
     </div>
 </body>
 <script type="text/babel">
-    
+    class Counter extends React.Component
+    {
+        constructor()
+        {
+            super();
+        }
+
+        render()
+        {
+            return(
+                <h1>Hello World!!</h1>
+            )
+        }
+    }
+
+    ReactDOM.render(<Counter/>,document.querySelector("#root"));
 </script>
 </html>
