@@ -35,17 +35,21 @@ class Todo extends Component
 
     render(){
         return(
-            <div>
-                <input type="text" value={this.state.currTask} onChange={this.handleChange}></input>
-                <button onClick={this.handleAddTask}>Add Task</button>
-                <ul>
-                    {this.state.tasks.map((taskObj)=>(
-                        <li key={taskObj.id}>
-                            <p>{taskObj.task}</p>
-                            <button onClick={()=>this.handleDelete(taskObj.id)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
+            <div class="main">
+                <div class="nav">
+                    <input type="text" value={this.state.currTask} onChange={this.handleChange} class="textbox"></input>
+                    <button onClick={this.handleAddTask} class="addbtn">Add Task</button>
+                </div>
+                <div class="tasks">
+                    <ul>
+                        {this.state.tasks.map((taskObj)=>(
+                            <li key={taskObj.id} class="ulist">
+                                <button onClick={()=>this.handleDelete(taskObj.id)} class="deletebtn">Delete</button>
+                                <p class="taskContent">{taskObj.task}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         );
     }
