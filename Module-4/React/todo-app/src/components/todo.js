@@ -25,7 +25,12 @@ class Todo extends Component
     }
 
     handleDelete=(id)=>{
-        
+        let narr=this.state.tasks.filter((taskObj)=>{
+            return taskObj.id!==id;
+        });
+        this.setState({
+            tasks:[...narr]
+        })
     }
 
     render(){
@@ -37,7 +42,7 @@ class Todo extends Component
                     {this.state.tasks.map((taskObj)=>(
                         <li key={taskObj.id}>
                             <p>{taskObj.task}</p>
-                            <button>Delete</button>
+                            <button onClick={()=>this.handleDelete(taskObj.id)}>Delete</button>
                         </li>
                     ))}
                 </ul>
