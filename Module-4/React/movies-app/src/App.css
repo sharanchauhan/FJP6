@@ -40,19 +40,19 @@
 .banner-card{
   width: 100vw;
   margin-top: 2vh;
-  margin-bottom: 14vh;
+  margin-bottom: 5vh;
   position: relative;
   height: 70vh;
 }
 
 .banner-img{
-  width: 100%;
+  width: 99%;
   height: 70vh;
 }
 
 .banner-title{
   position: absolute;
-  top:60vh;
+  top:50vh;
   left:5vw;
   color:white;
 }
@@ -60,7 +60,7 @@
 .banner-text{
   position: absolute;
   color: white;
-  top:68vh;
+  top:58vh;
   left: 5vw;
 } 
 
@@ -70,3 +70,21 @@
   justify-content: center;
   padding: 1rem;
 }
+
+.movie-card{
+  position: relative; 
+  width: 20vw;
+  margin: 1rem;
+  color: white;
+ }
+
+ .movie-title{
+   position: absolute;
+   top:1rem;
+   left: 1rem;
+ }
+
+ .movies-button{
+   position: absolute;
+   bottom: 2rem;
+ } 
