@@ -4,7 +4,7 @@ import { Component } from "react";
 class NavBar extends Component{
     render(){
         return(
-        <div style={{display:"flex",padding:'0.5rem'}}>
+        <div style={{display:"flex",padding:'0.5rem',color:"lightseagreen"}}>
             <h1>Movies App</h1>
             <h2 style={{marginLeft:"2rem",marginTop:".5rem"}}>Favourites</h2>
         </div>
