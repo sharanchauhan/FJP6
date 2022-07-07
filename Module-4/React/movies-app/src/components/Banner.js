@@ -1,7 +1,8 @@
 import { Component } from "react";
 import {movies} from "../movieData"
 
-let movie = movies.results[0];
+// let movie = movies.results[0];// Fixed
+let movie = movies.results[Math.floor(Math.random() * 10) ];// Random
 let backdrop_path = movie.backdrop_path;
 
 class Banner extends Component {
