@@ -6,6 +6,7 @@ class MovieList extends Component {
     super();
     this.state = {
       hover: "",
+      pArr: [1],
     };
   }
   render() {
@@ -68,6 +69,13 @@ class MovieList extends Component {
                   3
                 </a>
               </li>
+              {this.state.pArr.map((ele) => (
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    {ele}
+                  </a>
+                </li>
+              ))}
               <li className="page-item">
                 <a className="page-link" href="#">
                   Next
