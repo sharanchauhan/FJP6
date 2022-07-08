@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { movies } from "../movieData";
+import axios from 'axios'
 
 class MovieList extends Component {
   constructor() {
@@ -7,10 +8,20 @@ class MovieList extends Component {
     this.state = {
       hover: "",
       pArr: [1],
+      movies:[]
     };
   }
+  async componentDidMount(){
+    console.log("Component Did Mount");
+    const res = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=81242a2aa2066e052c78ec9ac1700c59&language=en-US&page=1')
+    console.log(res.data);
+    this.setState({
+        movies:[...res.data.results]
+    })
+  }
+
   render() {
-    let moviesArr = movies.results;
+    console.log("Rendered");
     return (
       <>
         <div>
@@ -19,7 +30,7 @@ class MovieList extends Component {
           </h3>
         </div>
         <div className="movies-list">
-          {moviesArr.map((movieEle) => (
+          {this.state.movies.map((movieEle) => (
             <div
               className="card movie-card"
               onMouseEnter={() => this.setState({ hover: movieEle.id })}
