@@ -36,6 +36,22 @@ handleNext=()=>{
         currPage:this.state.currPage+1
     },this.changeMovies)
 }
+
+handlePrev=()=>{
+  if(this.state.currPage!=1){
+      this.setState({
+          currPage:this.state.currPage-1
+      },this.changeMovies);
+  }
+}
+
+handlePageClick=(ele)=>{
+  if(ele!=this.state.currPage){
+      this.setState({
+          currPage: ele
+      },this.changeMovies);
+  }
+}
   render() {
     console.log("Rendered");
     return (
@@ -77,13 +93,13 @@ handleNext=()=>{
           <nav aria-label="Page navigation example">
             <ul className="pagination">
               <li className="page-item">
-                <a className="page-link" href="#">
+                <a className="page-link" onClick={this.handlePrev}>
                   Previous
                 </a>
               </li>
               {this.state.pArr.map((ele) => (
                 <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a className="page-link" onClick={()=>this.handlePageClick(ele)}>
                     {ele}
                   </a>
                 </li>
