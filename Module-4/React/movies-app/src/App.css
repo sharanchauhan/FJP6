@@ -76,15 +76,23 @@
   width: 20vw;
   margin: 1rem;
   color: white;
- }
+}
 
- .movie-title{
-   position: absolute;
-   top:1rem;
-   left: 1rem;
- }
+.movie-title{
+  position: absolute;
+  top:1rem;
+  left: 1rem;
+}
 
- .movies-button{
-   position: absolute;
-   bottom: 2rem;
- } 
+.movies-button{
+  position: absolute;
+  bottom: 2rem;
+} 
+
+.genre-selector{
+  padding-top: 3rem;
+}
+
+.fav-table{
+padding-top:3rem;
+}
