@@ -3,7 +3,7 @@ import NavBar from './components/NavBar';
 import Banner from './components/Banner';
 import MovieList from './components/MovieList';
 import Fav from './components/Fav'
-import {BrowserRouter,Router,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>
