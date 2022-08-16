@@ -75,6 +75,17 @@ searchMovies = ()=>{
   }
 }
 
+sortPopularityDesc = ()=>{
+  let temp = this.state.movies.map((movieObj)=>movieObj);
+  temp.sort(function(objA,objB){
+      return objB.popularity - objA.popularity;
+  })
+  this.setState({
+      movies:[...temp],
+      movies2:[...temp]
+  })
+}
+
   render() {
     const moviesArr = movies.results;
     console.log(moviesArr);
@@ -118,7 +129,11 @@ searchMovies = ()=>{
                 <tr>
                   <th scope="col">Title</th>
                   <th scope="col">Genre</th>
-                  <th scope="col">Popularity</th>
+                  <th scope="col" style={{display:"flex",alignItem:"center",justifyContent:"space-evenly"}}>
+                                         <i class="fa fa-sort-up" style={{marginTop:"0.5rem"}} onClick={this.sortPopularityDesc}></i>
+                                          Popularity
+                                         <i class="fa fa-sort-down"></i>
+                  </th>
                   <th scope="col">Rating</th>
                   <th scope="col">Delete</th>
                 </tr>
@@ -133,14 +148,10 @@ searchMovies = ()=>{
                       />
                       {movieEle.title}
                     </th>
-                    <td>{genreIds[movieEle.genre_ids[0]]}</td>
-                    <td>{movieEle.popularity}</td>
-                    <td>{movieEle.vote_average}</td>
-                    <td>
-                      <button type="button" className="btn btn-danger">
-                        Delete
-                      </button>
-                    </td>
+                    <td className="text-center">{genreIds[movieEle.genre_ids[0]]}</td>
+                    <td className="text-center">{movieEle.popularity}</td>
+                    <td className="text-center" >{movieEle.vote_average}</td>
+                    <td className="text-center"><button type="button" className="btn btn-danger">Delete</button></td>
                   </tr>
                 ))}
               </tbody>
