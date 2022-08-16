@@ -1,7 +1,9 @@
 const  express = require("express")
+const cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser);
 const userModel = require("./userModel");
 
 app.post("/signup",async function(req,res){
@@ -18,6 +20,11 @@ app.post("/signup",async function(req,res){
     {
         res.send(err.message);
     }
+})
+
+app.get("/users",function(req,res){
+    console.log(req.cookies);
+
 })
 
 app.post("/login",async function(req,res){
