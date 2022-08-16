@@ -97,7 +97,7 @@ handleFavouritesState = ()=>{
               <h5 className="card-title movie-title">{movieEle.title}</h5>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 {this.state.hover === movieEle.id && (
-                  <a type="button" className="btn btn-primary movies-button" onClick={()=>this.handleFavourites(movieEle)}>
+                  <a type="button" style={{color:"black"}} className="btn btn-primary movies-button" onClick={()=>this.handleFavourites(movieEle)}>
                   {this.state.favourites.includes(movieEle.id)?"Remove from Favourites":"Add to Favourites"}</a>)}
               </div>
             </div>
