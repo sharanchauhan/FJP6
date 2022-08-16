@@ -7,6 +7,7 @@ class Fav extends Component {
         genres:[],
         currgenre:'All genres',
         movies:[],
+        movies2:[],
         currText:''
     }
   }
@@ -22,6 +23,7 @@ class Fav extends Component {
     })
     this.setState({
       movies:[...data],
+      movies2:[...data],
       genres:[...tempArr]
     })
   }
@@ -37,12 +39,14 @@ filterMovies = ()=>{
     let data = JSON.parse(localStorage.getItem("movies-app") || '[]');
     if(this.state.currgenre == "All genres"){
         this.setState({
-            movies:[...data]
+            movies:[...data],
+            movies2:[...data]
         })
     }else{
         let filteredMovies = data.filter((movieObj)=>genreIds[movieObj.genre_ids[0]] == this.state.currgenre)
         this.setState({
-            movies:[...filteredMovies]
+            movies:[...filteredMovies],
+            movies2:[...filteredMovies]
         })
     }
 }
@@ -56,7 +60,7 @@ handleCurrText = (inputValue)=>{
 
 searchMovies = ()=>{
   if(this.state.currText != ''){
-      let filteredArr = this.state.movies.filter((movieObj)=>{
+      let filteredArr = this.state.movies2.filter((movieObj)=>{
           let title = movieObj.original_title.toLowerCase();
           return title.includes(this.state.currText.toLowerCase());
       })
@@ -66,8 +70,8 @@ searchMovies = ()=>{
   }else{
       let data = JSON.parse(localStorage.getItem("movies-app") || '[]');
       this.setState({
-          movies:[...data]
-      })
+      movies:[...this.state.movies2]      
+    })
   }
 }
 
