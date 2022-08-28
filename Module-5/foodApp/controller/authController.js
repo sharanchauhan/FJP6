@@ -1,34 +1,23 @@
-const  express = require("express")
-const cookieParser = require("cookie-parser");
-var jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken")
 const secretKey = "kjds5439jkfdsljfsop"
-const app = express();
-app.use(express.json());
-app.use(cookieParser);
-const userModel = require("./userModel");
+const userModel = require("../model/userModel");
 
-app.post("/signup",async function(req,res){
-    try
-    {
+
+async function signupController(req,res){
+    try{
         let data = req.body;
-        console.log(data);
         let newUser =await userModel.create(data);
+        console.log(newUser);
         res.json({
             message:"data recieved",
-            data:data})
+        })}
+    catch(err){
+        res.send(err.message)
     }
-    catch(err)
-    {
-        res.send(err.message);
-    }
-})
+}
 
-app.get("/users",function(req,res){
-    console.log(req.cookies);
 
-})
-
-app.post("/login",async function(req,res){
+async function loginController(req,res){
     try{
         let data = req.body;
         // console.log(data);
@@ -56,24 +45,9 @@ app.post("/login",async function(req,res){
     }catch(err){
         console.log(err.message);
     }
-})
+}
 
-app.get("/user",protectRoute, async function(req,res){
-    try{
-        const userId = req.userId;
-        const user = await userModel.findById(userId);
-        //to send json data
-        res.json({
-            data:user,
-            message:"Data about logged in user is send"
-        })
-    }catch(err){
-        res.send(err.message)
-    }
-
-})
-
-app.patch("/forgetPassword",async function(req,res){
+async function forgetPasswordController(req,res){
     try{
         let {email} = req.body;
         let afterFiveMin = Date.now() + 1000*60*5;
@@ -90,9 +64,10 @@ app.patch("/forgetPassword",async function(req,res){
     }catch(err){
         res.send(err.message);
     }
-})
+}
 
-app.patch("/resetPassword", async function(req,res){
+
+async function resetPasswordController(req,res){
     try{
         let {otp,password,confirmPassword,email} = req.body;
         let user = await userModel.findOne({email});
@@ -123,27 +98,17 @@ app.patch("/resetPassword", async function(req,res){
         }
         //key delte -> get the document obj -> modify that object by removing useless keys
         //save this doc in db
+
     }catch(err){
         res.send(err.message)
     }
-})
+}
+
 
 function otpGenerator(){
     return Math.floor(Math.random()*1000000);
 }
 
-app.get("/users", protectRoute,async function(req,res){
-    try{
-        let users = await userModel.find();
-        res.json(users);
-    }catch(err){
-        res.send(err.message);
-    }
-    // console.log(req.cookies);
-
-    // res.send("cookie read");
-
-})
 
 function protectRoute(req,res,next){
     try{
@@ -162,9 +127,13 @@ function protectRoute(req,res,next){
         console.log(err);
         res.send(err.message)
     }
-
+    
 }
 
-app.listen(4000,function(){
-    console.log("server started at 4000");
-})
+module.exports = {
+    signupController,
+    loginController,
+    resetPasswordController,
+    forgetPasswordController,
+    protectRoute
+}
