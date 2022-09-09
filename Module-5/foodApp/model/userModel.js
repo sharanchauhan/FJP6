@@ -2,7 +2,8 @@
 //(scheme) -> set of features and rules a certain entity should follow
 const mongoose = require('mongoose')
 const {Schema} = mongoose
- const pass = require("../secrets");
+const pass = require("../secret");
+
 let dbLink =  `mongodb+srv://dbUser:${pass}@cluster0.akaau1f.mongodb.net/?retryWrites=true&w=majority`
 
 mongoose.connect(dbLink).then(function(){
@@ -10,6 +11,9 @@ mongoose.connect(dbLink).then(function(){
 }).catch(function(err){
     console.log("error",err);
 })
+
+
+//how to create a schema -> only entries written will be added to your db no one else.
 
 let userSchema = new Schema({
     name:{
